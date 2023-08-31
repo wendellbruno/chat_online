@@ -1,33 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
 import './App.css'
+import {io} from 'socket.io-client';
+import axios from 'axios';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [nome, setNome] = useState<string>('');
+  const [uidSala, setUidSala] = useState<string>('');
+
+  
+  
+/*   function handleLogar(event?: FormDataEvent){
+    const socket = io('http://192.168.0.43:3000');
+    event?.preventDefault();
+    socket.emit('usuarioLogou', nome)
+  }  */
+
+  function criarSala(){
+
+    const socket = io('http://192.168.0.43:3000');
+    socket.emit('criarSala',{nome: 'Wendell'})
+  }
+
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+          <input
+          placeholder='Nome do usuario'
+          onChange={e => setNome(e.target.value)}
+          value={nome}
+          type="text" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button onClick={criarSala}>Criar Sala</button>
+      <button>Entrar Sala</button>
+    
     </>
   )
 }
