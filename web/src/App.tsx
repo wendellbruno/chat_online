@@ -17,9 +17,20 @@ function App() {
   }  */
 
   function criarSala(){
+   try{
+    axios.post("http://192.168.0.43:3000/criarsala",{
+      usuario: nome
+    })
+   }catch(erro){
+    console.log(erro)
+   }
+    /* const socket = io('http://192.168.0.43:3000');
+    socket.emit('criarSala') */
+  }
 
-    const socket = io('http://192.168.0.43:3000');
-    socket.emit('criarSala',{nome: 'Wendell'})
+  function entrarEmSala(){
+    const socket = io('http://192.168.0.43:3000/4130b0fb-a391-409c-b2ba-4282174dfe55');
+    //socket.emit('criarSala')
   }
 
 
@@ -28,12 +39,12 @@ function App() {
       <div>
           <input
           placeholder='Nome do usuario'
-          onChange={e => setNome(e.target.value)}
           value={nome}
+          onChange={e => setNome(e.target.value)}
           type="text" />
       </div>
-      <button onClick={criarSala}>Criar Sala</button>
-      <button>Entrar Sala</button>
+      <button onClick={criarSala} type='submit'>Criar Sala</button>
+      <button onClick={entrarEmSala}>Entrar Sala</button>
     
     </>
   )

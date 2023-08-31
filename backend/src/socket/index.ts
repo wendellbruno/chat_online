@@ -1,27 +1,21 @@
-import {Server} from 'socket.io';
 import {v4} from 'uuid';
-import { http } from '../index';
+import {criarNovaSala} from '..';
 
-const io = new Server(http, {
-    cors:{
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
-});
 
-export function criarSala(){
+
+export async function criarSala(){
     const uidSala = v4();
-    const novaSala = io.of(`/${uidSala}`)
-
+    const novaSala = criarNovaSala(uidSala);
+    console.log(novaSala.name);
     novaSala.on("connection", (socket) =>{
         console.log('sala criada com sucesso', uidSala, socket.data)
         
     });
 }
 
-io.on("connection",async  (socket) =>{
+/* io.on("connection",async  (socket) =>{
     socket.on("criarSala", (data) =>{
         io.of(`${socket.id}`,)
     })
     io.of
-});
+}); */
