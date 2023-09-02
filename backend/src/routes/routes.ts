@@ -5,4 +5,4 @@ export const routes = Router();
 
 
 //criar Sala
-routes.post('/criarsala', criarSala)
+routes.get('/criarsala', criarSala)

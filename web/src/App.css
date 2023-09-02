@@ -18,6 +18,27 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+main{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+main .container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+
+
+main .container input{
+  height: 30px;
+  border-radius: 8px;
+}
+
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -40,3 +61,13 @@
 .read-the-docs {
   color: #888;
 }
+
+.box {
+  float: left;
+  height: 100px;/*Altura da linha*/
+ }
+ 
+ .linha-vertical {
+  border-left: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+  box-sizing: border-box;
+ }

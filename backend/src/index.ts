@@ -10,7 +10,9 @@ const http = createServer(app);
 app.use(cors({
     origin: '*'
 }));
+app.use(express.json());
 app.use(routes);
+
 
 const io = new Server(http, {
     cors:{
