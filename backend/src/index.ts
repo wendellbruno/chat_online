@@ -21,7 +21,7 @@ const io = new Server(http, {
     }
 });
 
-export function criarNovaSala(uuid: string){
+export function returnSala(uuid: string){
     return io.of(`${uuid}`)
 }
 

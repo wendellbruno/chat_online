@@ -1,24 +1,50 @@
 import {v4} from 'uuid';
-import {criarNovaSala} from '..';
+import {returnSala} from '..';
+import { Response, Request } from 'express';
 
 
 
-export function criarSala(req,res){
+export async function criarSala(req: Request,res: Response){
     const uidSala = v4();
-    const novaSala = criarNovaSala(uidSala);
+    const novaSala = returnSala(uidSala);
     if(novaSala){
         console.log(novaSala.name)
-        return res.json(novaSala.name)
+        return res.json({
+            sala: novaSala.name, 
+            usuario: req.body
+        });
     }
     else{
         return ;
     }
 }
 
-/* novaSala.on("connection", (socket) =>{
-    console.log('sala criada com sucesso', uidSala)
+export async function entrarEmSala(req: Request, res: Response){
+   try{
+    const {uidSala, nomeUsuario } = req.body;
+    const sala = returnSala(uidSala)
+
+    sala.on('connection', (socket) => {
+        socket.emit("bemvindo",{
+            nome: nomeUsuario
+        });
+
+        
+        socket.on("msg",(data) =>{
+            console.log(data)
+            sala.emit("msgFront", (data))
+        })
+        socket.on("disconnect", () => console.log(socket.id, 'desconectou'))
+
+
+    })
+   }catch(erro){
+    console.log(erro)
+   }
+
+
     
-}); */
+}
 
 /* io.on("connection",async  (socket) =>{
     socket.on("criarSala", (data) =>{

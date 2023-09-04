@@ -1,8 +1,9 @@
 import {Router} from 'express';
-import {criarSala} from '../socket';
+import {criarSala,entrarEmSala} from '../socket';
 
 export const routes = Router();
 
 
 //criar Sala
-routes.get('/criarsala', criarSala)
+routes.post('/criarsala', criarSala)
+routes.post('/room', entrarEmSala);
