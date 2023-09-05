@@ -62,12 +62,4 @@ main .container input{
   color: #888;
 }
 
-.box {
-  float: left;
-  height: 100px;/*Altura da linha*/
- }
- 
- .linha-vertical {
-  border-left: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
-  box-sizing: border-box;
- }
+

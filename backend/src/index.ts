@@ -8,22 +8,45 @@ const app = express();
 const http = createServer(app);
 
 app.use(cors({
-    origin: '*'
+    origin: '*',
 }));
 app.use(express.json());
 app.use(routes);
 
 
-const io = new Server(http, {
+export const io = new Server(http, {
     cors:{
         origin: "*",
         methods: ["GET", "POST"]
     }
 });
 
-export function returnSala(uuid: string){
-    return io.of(`${uuid}`)
+io.on("connection", (socket) =>{
+    console.log("Novo Usuario se conectou", socket.id);
+
+    socket.on("join_room", (data) =>{
+        socket.join(data.uidSala);
+        socket.emit("user_join_room", data.nomeUsuario)
+    })
+
+    socket.on("send_mesage", (data) =>{
+        console.log(data)
+        io.to(data.uidSala).emit("receive_message", data)
+    })
+
+    socket.on("disconnect", () =>{
+        console.log("usuario desconectou", socket.id)
+    })
+});
+
+export function returnSala(){
+    /* return io.of(`${uuid}`) */
+    return  io;
 }
+
+
+
+
 
 http.listen(3000, () => console.log('App Rodando'));
 

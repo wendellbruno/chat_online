@@ -1,14 +1,17 @@
 import React from 'react';
 import { createContext, useContext ,useState } from 'react';
+import { Socket, io } from 'socket.io-client';
 
  type Context = {
     globalNomeUsuario: string;
     setGlobalNomeUsuario: (nomeDeUsuario: string) => void;
     globalUidSala: string;
     setGlobalUidSala: (uidSala: string) => void;
+    socket: Socket
 }
 
 const ChatContext = createContext<Context>({} as Context);
+const socket = io("http://192.168.0.43:3000");
 
 type Props = {
     children? : React.ReactNode
@@ -33,6 +36,7 @@ export const ChatProvider: React.FC<Props> = ({children}) => {
         setGlobalUidSala,
         globalNomeUsuario,
         setGlobalNomeUsuario,
+        socket
     }}
     >
         {children}
@@ -46,4 +50,3 @@ export function useGlobalContext(){
     const context = useContext(ChatContext);
     return context;
 }
-
