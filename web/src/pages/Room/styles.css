@@ -3,33 +3,53 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 800px;
-    height: 500px;
     border: 1px solid white;
+    height: 70%;
+    width: 70%;
+}
 
+.containerTextMessage{
+    display: flex;
 }
 
 .containerMenssage{
-    width: 100%;
-    height: 80%;
+    position: relative;
+    max-width: 100%;
+    height: 90%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid red;
 }
 
 .containerTextArea{
     border-top: 1px solid white;
-    width: 100%;
+    height: 50px;
     display: flex;
-    gap: 5px;
-    justify-content: space-between;
-
+    align-items: center;
+    justify-content: center;
 }
 
 .containerTextArea textarea{
+    width: 500px;
+    height: 40px;
     resize: none;
 }
 
-.BtnEnviar{
-    background-color: green;
-    width: 10%;
-    border-radius: 0;
 
+.containerTextMessage{
+    
+}
+
+.containerChat .you{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    border: 1px solid yellow;
+    align-items: flex-end;
+}
+
+.containerChat .other{
+    background-color: blue;
 }

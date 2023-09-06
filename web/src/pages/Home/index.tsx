@@ -1,13 +1,9 @@
 import React  from "react";
-import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context";
-
-//const socket = io("http://192.168.0.43:3000");
-
+import './styles.css';
 export const Home: React.FC = () => {
-  /* const [nomeUsuario, setNomeUsuario] = useState<string>("");
-  const [uidSala, setUidSala] = useState<string>(""); */
+  
   const {
     globalNomeUsuario,
     setGlobalNomeUsuario,
