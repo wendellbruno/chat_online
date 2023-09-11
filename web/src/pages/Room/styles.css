@@ -5,7 +5,7 @@
     justify-content: space-between;
     border: 1px solid white;
     height: 70%;
-    width: 70%;
+    width: 40%;
 }
 
 .containerTextMessage{
@@ -20,7 +20,6 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    border: 1px solid red;
 }
 
 .containerTextArea{
@@ -39,17 +38,35 @@
 
 
 .containerTextMessage{
-    
+    display: flex;
+    text-align: start;
 }
 
 .containerChat .you{
-    display: flex;
-    flex-direction: column;
-    background-color: red;
-    border: 1px solid yellow;
-    align-items: flex-end;
+    
+    background-color: #005C4B;
+    width: 100%;
+    padding: 5px;
 }
 
 .containerChat .other{
-    background-color: blue;
+    background-color: #202C33;
+    width: 100%;
+    padding: 5px;
 }
+
+
+
+.containerMenssage::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+  }
+  
+.containerMenssage::-webkit-scrollbar-track {
+    background: transparent;        /* color of the tracking area */
+  }
+  
+.containerMenssage::-webkit-scrollbar-thumb {
+    background-color: white;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid transparent;  /* creates padding around scroll thumb */
+  }

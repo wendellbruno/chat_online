@@ -41,7 +41,7 @@ export const Room: React.FC = () => {
           return (
             <div key={index} className='containerTextMessage'>
               <span className={element.usuario === globalNomeUsuario ? "you" : "other" } >
-              <p className='messageUsuario'>{element.usuario}</p>
+              <p className='messageUsuario'>{element.usuario} : </p>
               <p className='messageText'>{element.message}</p>
               </span>
             </div>
