@@ -1,21 +1,14 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {Routes} from './src/Routes';
+import {ChatProvider} from './src/context';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ChatProvider>
+      <Routes />
+    </ChatProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#282828',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
